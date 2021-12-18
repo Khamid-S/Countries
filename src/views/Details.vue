@@ -6,11 +6,11 @@
       </button>
       
 
-        <img :src="getCurrentCountry.flag">
+        <img :src="getCurrentCountry.flags.svg">
         <div class="info">
           <div class="col1">
           <h3>{{getCurrentCountry.name.common}}</h3>
-          <p><span class="strong">Native Name:</span> {{getCurrentCountry.altSpellings[2]}}</p>
+          <p><span class="strong">Native Name:</span> {{getCurrentCountry.altSpellings[getCurrentCountry.altSpellings.length-1]}}</p>
           <p><span class="strong">Population:</span> {{getCurrentCountry.population}}</p>
           <p><span class="strong">Region:</span> {{getCurrentCountry.region}}</p>
           <p><span class="strong">Subregion:</span> {{getCurrentCountry.subregion}}</p>
@@ -23,14 +23,15 @@
           <p><span class="strong">Currencies:</span> <span> {{getCurrentCountry.currencies[Object.keys(getCurrentCountry.currencies)[0]].name}}</span>
           <span> {{getCurrentCountry.currencies[Object.keys(getCurrentCountry.currencies)[0]].symbol}}</span>
           </p>
-          <p><span class="strong">Languages:</span> <span> {{languages}} </span></p>
+          <p><span class="strong">Languages:</span> <span v-for="language in Object.entries(getCurrentCountry.languages)"
+          :key="language[0]"> {{language[1]}} </span></p>
           </div>
           <br><br>
           <div class="col3">
           <h4>Border Countries:</h4>
           <div class="borders">
           <button v-for="country in getBorders"
-          :key="country.name"
+          :key="country.name.common"
           :class="{elementDark: getIsDark}"
           @click="goToCountry(country)">
           {{country.name}}
@@ -72,12 +73,14 @@ export default {
       let borders = [];
       const countries = this.getCountries;
       const currentCountry = this.getCurrentCountry;
+      if(currentCountry.hasOwnProperty('borders'){
       for(let i=0; i<currentCountry.borders.length;i++){
         for(let j=0; j<countries.length; j++){
           if(currentCountry.borders[i]==countries[j].cca3){
             borders.push(countries[j]);
           }
         }
+      }
       }
 
       return borders;
