@@ -9,8 +9,8 @@
         <img :src="getCurrentCountry.flag">
         <div class="info">
           <div class="col1">
-          <h3>{{getCurrentCountry.name}}</h3>
-          <p><span class="strong">Native Name:</span> {{getCurrentCountry.nativeName}}</p>
+          <h3>{{getCurrentCountry.name.common}}</h3>
+          <p><span class="strong">Native Name:</span> {{getCurrentCountry.altSpellings[2]}}</p>
           <p><span class="strong">Population:</span> {{getCurrentCountry.population}}</p>
           <p><span class="strong">Region:</span> {{getCurrentCountry.region}}</p>
           <p><span class="strong">Subregion:</span> {{getCurrentCountry.subregion}}</p>
@@ -19,12 +19,11 @@
           </div>
           <br><br>
           <div class="col2">
-          <p><span class="strong">Top Level Domain:</span> <span v-for="domain in getCurrentCountry.topLevelDomain"
-          :key="domain">{{domain}}</span></p>
-          <p><span class="strong">Currencies:</span> <span v-for="currency in getCurrentCountry.currencies"
-          :key="currency.code">{{currency.code}}</span></p>
-          <p><span class="strong">Languages:</span> <span v-for="language in getCurrentCountry.languages"
-          :key="language.name">{{language.name}} </span></p>
+          <p><span class="strong">Top Level Domain:</span> <span> {{getCurrentCountry.cca2}}</span></p>
+          <p><span class="strong">Currencies:</span> <span> {{getCurrentCountry.currencies[Object.keys(getCurrentCountry.currencies)[0]].name}}</span>
+          <span> {{getCurrentCountry.currencies[Object.keys(getCurrentCountry.currencies)[0]].symbol}}</span>
+          </p>
+          <p><span class="strong">Languages:</span> <span> {{languages}} </span></p>
           </div>
           <br><br>
           <div class="col3">
@@ -75,7 +74,7 @@ export default {
       const currentCountry = this.getCurrentCountry;
       for(let i=0; i<currentCountry.borders.length;i++){
         for(let j=0; j<countries.length; j++){
-          if(currentCountry.borders[i]==countries[j].alpha3Code){
+          if(currentCountry.borders[i]==countries[j].cca3){
             borders.push(countries[j]);
           }
         }
