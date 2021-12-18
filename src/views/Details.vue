@@ -55,7 +55,7 @@ export default {
     },
     goToCountry: function(country){
       this.$store.dispatch("setCurrentCountry", country);
-      this.$router.push(country.name);
+      this.$router.push(country.name.common);
     }
   },
   computed: {
