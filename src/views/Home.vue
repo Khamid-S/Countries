@@ -49,13 +49,11 @@ export default {
       let added;
       for(let i=0; i<this.getCountries.length;i++){
         added = false;
-        for(let j=0; j<countries[i].altSpellings.length;j++){
-          if((countries[i].altSpellings[j].toLowerCase().includes(this.searchQuery.toLowerCase())||
+        if((countries[i].name.official.toLowerCase().includes(this.searchQuery.toLowerCase())||
           countries[i].name.common.toLowerCase().includes(this.searchQuery.toLowerCase()))&&!added){
             added = true;
             temp.push(countries[i]);
           }
-        }
       }
       return temp;
     },
