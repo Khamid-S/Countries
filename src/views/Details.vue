@@ -73,7 +73,7 @@ export default {
       let borders = [];
       const countries = this.getCountries;
       const currentCountry = this.getCurrentCountry;
-      if(currentCountry.hasOwnProperty('borders'){
+      if(currentCountry.hasOwnProperty('borders')){
       for(let i=0; i<currentCountry.borders.length;i++){
         for(let j=0; j<countries.length; j++){
           if(currentCountry.borders[i]==countries[j].cca3){
