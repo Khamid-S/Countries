@@ -34,7 +34,7 @@
           :key="country.name.common"
           :class="{elementDark: getIsDark}"
           @click="goToCountry(country)">
-          {{country.name}}
+          {{country.name.common}}
           </button>
           </div>
           </div>
