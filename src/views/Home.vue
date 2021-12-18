@@ -51,7 +51,7 @@ export default {
         added = false;
         for(let j=0; j<countries[i].altSpellings.length;j++){
           if((countries[i].altSpellings[j].toLowerCase().includes(this.searchQuery.toLowerCase())||
-          countries[i].name.toLowerCase().includes(this.searchQuery.toLowerCase()))&&!added){
+          countries[i].name.common.toLowerCase().includes(this.searchQuery.toLowerCase()))&&!added){
             added = true;
             temp.push(countries[i]);
           }
