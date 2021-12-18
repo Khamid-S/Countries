@@ -19,7 +19,7 @@
           <h3>{{country.name.common}}</h3>
           <p><strong>Population:</strong> {{country.population}}</p>
           <p><strong>Area:</strong> {{country.area}} sq. km</p>
-          <p><strong>Capital:</strong> {{country.capital[0]}}</p>
+          <p><strong>Capital:</strong> {{country.capital}}</p>
         </div>
       </div>
   </div>
@@ -36,7 +36,7 @@ export default {
   methods:{
     goToCountry: function(country){
       this.$store.dispatch("setCurrentCountry", country);
-      this.$router.push(country.name);
+      this.$router.push(country.name.common);
     }
   },
   computed: {
